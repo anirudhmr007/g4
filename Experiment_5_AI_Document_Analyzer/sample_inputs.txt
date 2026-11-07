@@ -1,0 +1,16 @@
+Sample Test Inputs for Experiment 5:
+
+--- Test Case 1 ---
+Text file name: ai.txt
+Question: What are the applications of AI?
+Expected Answer: Applications of AI include healthcare, education, transportation and robotics.
+
+--- Test Case 2 ---
+Text file name: ai.txt
+Question: What is machine learning?
+Expected Answer: Machine learning is a subfield of AI that enables systems to learn patterns from data.
+
+--- Test Case 3 ---
+Text file name: ai.txt
+Question: Who invented quantum computers?
+Expected Answer: Information not available in the document.

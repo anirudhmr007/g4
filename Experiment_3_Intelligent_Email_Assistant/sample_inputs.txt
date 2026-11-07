@@ -1,0 +1,13 @@
+Sample Test Inputs for Experiment 3:
+
+--- Sample 1 ---
+Received email: Please attend the department meeting tomorrow at 10 AM in the conference hall.
+Tone: Professional
+
+--- Sample 2 ---
+Received email: Hey! Are you free for coffee this afternoon to catch up on the project?
+Tone: Friendly
+
+--- Sample 3 ---
+Received email: We request your immediate submission of the quarterly project milestone report.
+Tone: Formal

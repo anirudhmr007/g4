@@ -1,0 +1,1 @@
+Artificial Intelligence is a branch of computer science. It enables machines to perform tasks that normally require human intelligence. Applications of AI include healthcare, education, transportation and robotics. Machine learning is a subfield of AI that enables systems to learn patterns from data.

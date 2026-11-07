@@ -1,0 +1,16 @@
+Sample Test Inputs for Experiment 4:
+
+--- Sample 1 ---
+Student name: Arun
+Student interest: Artificial Intelligence
+Student skill level: Beginner
+
+--- Sample 2 ---
+Student name: Priya
+Student interest: Programming
+Student skill level: Intermediate
+
+--- Sample 3 ---
+Student name: Rahul
+Student interest: Security
+Student skill level: Intermediate
