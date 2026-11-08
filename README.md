@@ -1,161 +1,109 @@
 # 25CS2506 – Building Applications Using GPT-4
-## Laboratory Manual Reference Implementations & Datasets
+## Laboratory Manual Reference Programs & Datasets
 
-This repository contains the complete set of reference programs, datasets, setup scripts, and documentation for the six laboratory experiments outlined in the **25CS2506 – Building Applications Using GPT-4** laboratory manual.
+This repository contains the exact Python programs and sample datasets for the six experiments in the **25CS2506 – Building Applications Using GPT-4** laboratory manual.
 
-All programs are command-line applications designed to operate with a locally running **Ollama** language model (default: `llama3.2`), enabling demonstration and practice in an isolated offline or laboratory environment.
+The programs are command-line applications designed to work with a local Ollama model (e.g., `llama3.2` or any model installed on the laboratory computer) without requiring Internet access.
 
 ---
 
-## 📂 Repository Structure
+## Common Software Requirements
+- **Python 3.9** or later.
+- **Ollama** installed and running on the laboratory computer.
+- A model downloaded before the examination (for example, `llama3.2`). The model name must match the name shown by `ollama list`.
+- Python `requests` package (`pip install requests`).
 
-```text
-g4/
-├── .gitignore
-├── README.md                                         # Master documentation
-├── requirements.txt                                  # Global dependencies
-├── setup.py                                          # Master setup & system verification
-├── ollama_helper.py                                  # Common Ollama API connector
-│
-├── Experiment_1_Ecommerce_Chatbot/                   # Exp 1: E-commerce Chatbot
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── setup_check.py                                # Pre-flight environment check
-│   ├── ollama_helper.py                              # Local helper connector
-│   ├── products.csv                                  # Sample product dataset
-│   ├── ecommerce_chatbot.py                          # Primary experiment code
-│   ├── main.py                                       # Entrypoint script
-│   ├── run.bat                                       # Windows 1-click execution script
-│   └── run.sh                                        # Linux/macOS execution script
-│
-├── Experiment_2_Blog_Content_Generator/              # Exp 2: AI Blog Content Generator
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── setup_check.py
-│   ├── ollama_helper.py
-│   ├── sample_inputs.txt                             # Reference topics & styles
-│   ├── blog_generator.py
-│   ├── main.py
-│   ├── run.bat
-│   └── run.sh
-│
-├── Experiment_3_Intelligent_Email_Assistant/         # Exp 3: Intelligent Email Assistant
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── setup_check.py
-│   ├── ollama_helper.py
-│   ├── sample_inputs.txt                             # Sample emails & tone variations
-│   ├── email_assistant.py
-│   ├── main.py
-│   ├── run.bat
-│   └── run.sh
-│
-├── Experiment_4_Personalized_Recommendation_System/  # Exp 4: Course Recommender
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── setup_check.py
-│   ├── ollama_helper.py
-│   ├── courses.csv                                   # Sample course catalog dataset
-│   ├── sample_inputs.txt
-│   ├── course_recommender.py
-│   ├── main.py
-│   ├── run.bat
-│   └── run.sh
-│
-├── Experiment_5_AI_Document_Analyzer/                # Exp 5: Summarize, Query & Export
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── setup_check.py
-│   ├── ollama_helper.py
-│   ├── ai.txt                                        # Sample document dataset
-│   ├── sample_inputs.txt
-│   ├── document_analyzer.py
-│   ├── main.py
-│   ├── run.bat
-│   └── run.sh
-│
-└── Experiment_6_AI_Medical_Assistant/                # Exp 6: AI-Powered Medical Assistant
-    ├── README.md
-    ├── requirements.txt
-    ├── setup_check.py
-    ├── ollama_helper.py
-    ├── health_info.txt                               # Sample health dataset
-    ├── sample_inputs.txt
-    ├── medical_assistant.py
-    ├── main.py
-    ├── run.bat
-    └── run.sh
+---
+
+## One-time Setup
+```bash
+pip install requests
+ollama list
+ollama run llama3.2
 ```
+*Note: Ollama's local API is normally available at `http://localhost:11434`.*
 
 ---
 
-## 🛠️ Common Software Requirements
+## Model Configuration & Compatibility
+The helper program `ollama_helper.py` connects Python to the local Ollama model.
+As stated in the manual:
+> *"Replace `llama3.2` with the exact model name installed on the computer. Do not use a model name that is not shown by `ollama list`."*
 
-- **Python**: Version 3.9 or later.
-- **Ollama**: Installed and running locally. [Download Ollama](https://ollama.ai/download).
-- **Model**: `llama3.2` downloaded before running experiments.
-- **Python Dependencies**: `requests` package (`pip install requests`).
-
----
-
-## ⚡ One-Time Setup
-
-1. **Install Python dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Verify / Run Ollama & download the model:**
-   ```bash
-   ollama list
-   ollama run llama3.2
-   ```
-   *(After verifying the model prompt opens and works, exit by typing `/bye`)*.
-   Ollama's local API will remain active at `http://localhost:11434`.
-
-3. **Run the master setup check:**
-   ```bash
-   python setup.py
-   ```
+`ollama_helper.py` defaults to `llama3.2` and will automatically use whichever model is installed on the computer if `llama3.2` is not present, allowing it to run smoothly on any lab system.
 
 ---
 
-## 📑 Experiment Index & Quick Reference
+## Experiments & Files
 
-| # | Experiment | Folder | Dataset | Output File |
-| :---: | :--- | :--- | :--- | :--- |
-| **1** | [Building an E-commerce Chatbot](Experiment_1_Ecommerce_Chatbot/) | `Experiment_1_Ecommerce_Chatbot` | `products.csv` | Interactive CLI |
-| **2** | [AI-Powered Blog Content Generator](Experiment_2_Blog_Content_Generator/) | `Experiment_2_Blog_Content_Generator` | User Input | `blog.txt` |
-| **3** | [Intelligent Email Assistant](Experiment_3_Intelligent_Email_Assistant/) | `Experiment_3_Intelligent_Email_Assistant` | User Input | `email_reply.txt` |
-| **4** | [Personalized Recommendation System](Experiment_4_Personalized_Recommendation_System/) | `Experiment_4_Personalized_Recommendation_System` | `courses.csv` | Interactive CLI |
-| **5** | [AI Document Analyzer: Summarize, Query and Export](Experiment_5_AI_Document_Analyzer/) | `Experiment_5_AI_Document_Analyzer` | `ai.txt` | `analysis_result.txt` |
-| **6** | [AI-Powered Medical Assistant](Experiment_6_AI_Medical_Assistant/) | `Experiment_6_AI_Medical_Assistant` | `health_info.txt` | Interactive CLI |
+| Experiment | Folder | Program | Dataset |
+| :--- | :--- | :--- | :--- |
+| **Experiment 1 – Building an E-commerce Chatbot** | `Experiment_1_Ecommerce_Chatbot` | `ecommerce_chatbot.py` | `products.csv` |
+| **Experiment 2 – AI-Powered Blog Content Generator** | `Experiment_2_Blog_Content_Generator` | `blog_generator.py` | *(User input)* |
+| **Experiment 3 – Intelligent Email Assistant** | `Experiment_3_Intelligent_Email_Assistant` | `email_assistant.py` | *(User input)* |
+| **Experiment 4 – Personalized Recommendation System** | `Experiment_4_Personalized_Recommendation_System` | `course_recommender.py` | `courses.csv` |
+| **Experiment 5 – AI Document Analyzer** | `Experiment_5_AI_Document_Analyzer` | `document_analyzer.py` | `ai.txt` |
+| **Experiment 6 – AI-Powered Medical Assistant** | `Experiment_6_AI_Medical_Assistant` | `medical_assistant.py` | `health_info.txt` |
 
 ---
 
-## 🚀 Running Each Experiment Individually
+## How to Run Each Experiment
 
-Every experiment folder contains:
-1. `setup_check.py`: Checks prerequisites, model connectivity, and dataset integrity before running.
-2. `main.py` & named script (e.g., `ecommerce_chatbot.py`).
-3. `run.bat` (Windows 1-click launcher) and `run.sh` (Linux/macOS launcher).
-4. `requirements.txt` & `ollama_helper.py` so each folder is completely self-contained.
+Navigate to the experiment folder and run its Python program:
 
-### Example: Running Experiment 1
+### Experiment 1:
 ```bash
 cd Experiment_1_Ecommerce_Chatbot
-python setup_check.py
 python ecommerce_chatbot.py
 ```
 
+### Experiment 2:
+```bash
+cd Experiment_2_Blog_Content_Generator
+python blog_generator.py
+```
+
+### Experiment 3:
+```bash
+cd Experiment_3_Intelligent_Email_Assistant
+python email_assistant.py
+```
+
+### Experiment 4:
+```bash
+cd Experiment_4_Personalized_Recommendation_System
+python course_recommender.py
+```
+
+### Experiment 5:
+```bash
+cd Experiment_5_AI_Document_Analyzer
+python document_analyzer.py
+```
+
+### Experiment 6:
+```bash
+cd Experiment_6_AI_Medical_Assistant
+python medical_assistant.py
+```
+
 ---
 
-## 🔧 Troubleshooting Guide
+## Quick Reference: Files to Prepare (Manual Page 12)
 
-| Issue | Cause | Solution |
+| File name | Used in | Purpose |
 | :--- | :--- | :--- |
-| **Connection refused** | Ollama is not running | Run `ollama serve` or open the Ollama desktop app. Ensure `http://localhost:11434` is accessible. |
-| **Model not found (404)** | `llama3.2` is not installed | Run `ollama run llama3.2` or set the model via environment variable `OLLAMA_MODEL=<name>`. |
-| **ModuleNotFoundError** | `requests` package is missing | Run `pip install requests` or `pip install -r requirements.txt`. |
-| **CSV / File not found** | Script run from wrong directory | Make sure you `cd` into the experiment's folder before executing, or keep dataset files in the same working directory. |
-| **Slow response** | Insufficient RAM or large model | Close unused applications or switch to a lighter quantized model. |
+| `ollama_helper.py` | All six experiments | Connects Python programs to the local Ollama model. |
+| `products.csv` | Experiment 1 | Contains product names, prices and descriptions. |
+| `courses.csv` | Experiment 4 | Contains course names, categories and skill levels. |
+| `ai.txt` | Experiment 5 | Sample document for summarization and question answering. |
+| `health_info.txt` | Experiment 6 | General health information used as context. |
+
+---
+
+## Troubleshooting
+- **Connection refused:** Check that Ollama is installed and running (`ollama serve` or open Ollama).
+- **Model not found:** Run `ollama list` and update the model name in `ollama_helper.py`.
+- **ModuleNotFoundError for requests:** Run `pip install requests`.
+- **CSV or text file not found:** Keep the dataset file in the same working folder as the Python program, or provide its correct path.
+- **Slow response:** Use a smaller model suitable for the computer's available RAM and allow sufficient time for generation.
